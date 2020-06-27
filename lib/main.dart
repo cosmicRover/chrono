@@ -1,5 +1,6 @@
 import 'package:chrono/intro/intro_page.dart';
 import 'package:chrono/map_view/map_view.dart';
+import 'package:chrono/pick_car/pick_car.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MapSample()
+      home:
     );
   }
 }
