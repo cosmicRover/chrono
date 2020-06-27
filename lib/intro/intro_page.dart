@@ -1,4 +1,6 @@
+import 'package:chrono/choose_location/choose_location.dart';
 import 'package:chrono/resuable_widgets/frame1.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class IntroPage extends StatelessWidget {
@@ -10,27 +12,39 @@ class IntroPage extends StatelessWidget {
       child: Scaffold(
         body: Stack(
           children: [
-            Image.asset(
-              'assets/images/home.gif',
-              height: _height,
-              width: _width,
-              fit: BoxFit.fill,
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/images/home.gif"),
+                    fit: BoxFit.fill),
+              ),
             ),
             GestureDetector(
-              onTap: () => print("tapped go"),
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Image.asset('assets/images/GO.gif'),
-              ),
-            ),
-            Align(
-              child: Image.asset(
-                'assets/images/button.gif',
-                alignment: Alignment.centerRight,
-                height: 150,
-                width: 150,
-              ),
-            )
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ChooseLocation()));
+                },
+                child: Container(
+                  child: Stack(
+                    children: [
+                      //TODO: Fix image placement issues
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Image.asset(
+                          'assets/images/button.gif',
+                          height: 270,
+                          width: _width,
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Image.asset('assets/images/GO.gif'),
+                      ),
+                    ],
+                  ),
+                )),
           ],
         ),
       ),
