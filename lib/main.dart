@@ -1,3 +1,4 @@
+import 'package:chrono/choose_location/choose_location.dart';
 import 'package:chrono/intro/intro_page.dart';
 import 'package:chrono/map_view/map_view.dart';
 import 'package:chrono/pick_car/pick_car.dart';
@@ -13,11 +14,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home:
+
+      debugShowCheckedModeBanner: false,
+      home: 
+
+
     );
   }
 }
