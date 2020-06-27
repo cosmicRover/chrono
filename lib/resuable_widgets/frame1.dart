@@ -25,6 +25,13 @@ class Frame1 extends StatelessWidget {
           ),
         ),
         Align(
+          alignment: Alignment.bottomCenter,
+          child: SvgPicture.asset(
+            "assets/images/bottom.svg",
+            fit: BoxFit.contain,
+          ),
+        ),
+        Align(
           alignment: Alignment.topCenter,
           child: SvgPicture.asset(
             "assets/images/header.svg",
@@ -36,15 +43,10 @@ class Frame1 extends StatelessWidget {
           child: Align(
               alignment: Alignment.topCenter,
               heightFactor: 20.0,
-              child: Image.asset("assets/images/logo.gif", height: 100.0,)
-          ),
-        ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: SvgPicture.asset(
-            "assets/images/bottom.svg",
-            fit: BoxFit.contain,
-          ),
+              child: Image.asset(
+                "assets/images/logo.gif",
+                height: 100.0,
+              )),
         ),
       ],
     );
