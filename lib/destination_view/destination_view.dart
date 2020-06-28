@@ -8,19 +8,6 @@ import 'package:chrono/resuable_widgets/custom_dialog.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class DestinationView extends StatefulWidget {
-  DestinationView() : super();
-  @override
-  DestinationViewState createState() => DestinationViewState();
-}
-
-class DestinationViewState extends State<DestinationView> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-
-class DestinationView extends StatefulWidget {
   final String time;
   final String car;
 
@@ -29,6 +16,8 @@ class DestinationView extends StatefulWidget {
   @override
   _DestinationViewState createState() => _DestinationViewState();
 }
+
+class _DestinationViewState extends State<DestinationView> {
 
   @override
   Widget build(BuildContext context) {
@@ -101,13 +90,13 @@ class DestinationView extends StatefulWidget {
                   },
                 ),
               ),
-              GestureDetector(child: Image.asset("assets/images/done.gif"),
-              onTap: (){
-                Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => IntroPage()));
-              },),
+              GestureDetector(
+                child: Image.asset("assets/images/done.gif"),
+                onTap: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => IntroPage()));
+                },
+              ),
             ])),
             Frame3(),
           ],

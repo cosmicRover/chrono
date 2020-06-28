@@ -95,7 +95,7 @@ class MapViewState extends State<MapView> {
       _mapStyle = string;
     });
     startTimer();
-//    waitThenNavigate();
+    waitThenNavigate();
 
     _getPolyline();
     super.initState();

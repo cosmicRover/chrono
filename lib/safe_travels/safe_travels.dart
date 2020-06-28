@@ -25,7 +25,7 @@ class _SaveTravelsViewState extends State<SaveTravelsView> {
 
   @override
   void initState() {
-//    waitThenNavigate();
+    waitThenNavigate();
     super.initState();
   }
 
