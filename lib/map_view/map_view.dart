@@ -22,13 +22,14 @@ class MapView extends StatefulWidget {
 }
 
 class MapViewState extends State<MapView> {
-  GoogleMapController _controller; 
+  GoogleMapController _controller;
   String _mapStyle;
   int wait_time = 5;
   Timer _timer;
   Map<PolylineId, Polyline> polylines = {};
   List<LatLng> polylineCoordinates = [];
   PolylinePoints polylinePoints = PolylinePoints();
+  final vm = MapViewModel();
 
   _addPolyLine() {
     PolylineId id = PolylineId("poly");
@@ -44,8 +45,7 @@ class MapViewState extends State<MapView> {
         PointLatLng(45.5051, -122.6750),
         PointLatLng(39.506890, -122.203047),
         travelMode: TravelMode.driving,
-      wayPoints: [PolylineWayPoint(location: "Sabo, Yaba Lagos Nigeria")]
-    );
+        wayPoints: [PolylineWayPoint(location: "Sabo, Yaba Lagos Nigeria")]);
     if (result.points.isNotEmpty) {
       result.points.forEach((PointLatLng point) {
         polylineCoordinates.add(LatLng(point.latitude, point.longitude));
@@ -53,8 +53,6 @@ class MapViewState extends State<MapView> {
     }
     _addPolyLine();
   }
-  
-
 
   void startTimer() {
     print("timer called");
@@ -76,8 +74,10 @@ class MapViewState extends State<MapView> {
   waitThenNavigate() async {
     var duration = Duration(seconds: 6);
     return Timer(duration, () {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => SaveTravelsView(widget.time, widget.car)));
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => SaveTravelsView(widget.time, widget.car)));
     });
   }
 
@@ -86,8 +86,8 @@ class MapViewState extends State<MapView> {
     zoom: 5,
   );
 
-  static final CameraPosition _kLake =
-      CameraPosition(target: LatLng(37.42796133580664, -122.085749655962), zoom: 19.0);
+  static final CameraPosition _kLake = CameraPosition(
+      target: LatLng(37.42796133580664, -122.085749655962), zoom: 19.0);
 
   @override
   void initState() {
@@ -97,6 +97,12 @@ class MapViewState extends State<MapView> {
     startTimer();
     waitThenNavigate();
 
+    vm.pickUpMarker.add(Marker(
+        markerId: MarkerId('mark1'),
+        draggable: true,
+        position: LatLng(45.5051, -122.6750),
+        icon: BitmapDescriptor.fromAsset(widget.car)));
+
     _getPolyline();
     super.initState();
   }
@@ -104,22 +110,23 @@ class MapViewState extends State<MapView> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+        backgroundColor: Colors.grey,
         body: Stack(
-      children: [
-        GoogleMap(
-          mapType: MapType.normal,
-          initialCameraPosition: _kGooglePlex,
-          onMapCreated: (GoogleMapController controller) {
-            _controller = controller;
-            _controller.setMapStyle(_mapStyle);
-          },
-          markers: Set.from(MapViewModel().pickUpMarker),
-          myLocationButtonEnabled: false,
-          polylines: Set<Polyline>.of(polylines.values)
-        ),
-        Frame1(),
-        Align(alignment: Alignment.bottomCenter, child: MapButton(wait_time))
-      ],
-    ));
+          children: [
+            GoogleMap(
+                mapType: MapType.normal,
+                initialCameraPosition: _kGooglePlex,
+                onMapCreated: (GoogleMapController controller) {
+                  _controller = controller;
+                  _controller.setMapStyle(_mapStyle);
+                },
+                markers: Set.from(vm.pickUpMarker),
+                myLocationButtonEnabled: false,
+                polylines: Set<Polyline>.of(polylines.values)),
+            Frame1(),
+            Align(
+                alignment: Alignment.bottomCenter, child: MapButton(wait_time))
+          ],
+        ));
   }
 }

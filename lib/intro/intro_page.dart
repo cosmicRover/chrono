@@ -1,3 +1,4 @@
+import 'package:chrono/app_constants/colors.dart';
 import 'package:chrono/choose_location/choose_location.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,14 +30,16 @@ class IntroPage extends StatelessWidget {
                   child: Stack(
                     children: [
                       //TODO: Fix image placement issues
-                      Align(
+                      Padding(
+                        padding: EdgeInsets.only(left:8),
+                        child:Align(
                         alignment: Alignment.bottomCenter,
                         child: Image.asset(
                           'assets/images/button.gif',
                           height: 270,
                           width: _width,
                         ),
-                      ),
+                      ),),
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: Image.asset('assets/images/GO.gif'),
@@ -44,6 +47,15 @@ class IntroPage extends StatelessWidget {
                     ],
                   ),
                 )),
+            Padding(
+              child: Align(
+                child: Text("Timeless Travels",
+                    style: TextStyle(color: CustomColors.purple, fontSize: 46, fontFamily: 'Streamster')),
+                alignment: Alignment.topCenter,
+                
+              ),
+              padding: EdgeInsets.only(top:200)
+            )
           ],
         ),
       ),

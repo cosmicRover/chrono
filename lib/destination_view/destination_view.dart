@@ -18,6 +18,58 @@ class DestinationView extends StatefulWidget {
 }
 
 class _DestinationViewState extends State<DestinationView> {
+  Widget customGif(String time) {
+    print(time);
+
+    switch (time) {
+      case "1950":
+        return Image.asset("assets/images/1950back.gif", fit: BoxFit.fill);
+      case "2025":
+        return Image.asset("assets/images/2025.gif", fit: BoxFit.fill);
+      case "4320":
+        return Image.asset("assets/images/nomicon.gif", fit: BoxFit.fill);
+    }
+  }
+
+Widget customText(String time) {
+    print(time);
+
+    switch (time) {
+      case "1950":
+        return Text(
+                  destinationDescription[1],
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                    fontFamily: 'Astron2',
+                  ),
+                );
+      case "2025":
+        return Text(
+                  destinationDescription[0],
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                    fontFamily: 'Astron2',
+                  ),
+                );
+      case "4320":
+        return Text(
+                  destinationDescription[2],
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                    fontFamily: 'Astron2',
+                  ),
+                );
+    }
+  }
+
+  List<String> destinationDescription = [
+    "Planet Cetza was once home to an ancient civilization known for their intricate architecture. Years of drastic climate change has turned their famous cities into desert towns, but there is still plenty of beauty to be seen here.",
+    "Planet Earth is known for its many beautiful locations, with Paris being one of its most scenic cities. Return to the past to tour the famous city of love while wondering at its retro style and fantastic cuisine.",
+    "Although Planet Zumar looks like an endless desert at first glance, this is actually a clever defense system to dissuade invaders. The actual city is deep below ground and is well known for its mining exports and technology."
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -31,17 +83,10 @@ class _DestinationViewState extends State<DestinationView> {
           children: [
             Expanded(
                 child: ListView(children: [
-              Image.asset("assets/images/nomicon.gif", fit: BoxFit.fill),
+              customGif(widget.time),
               Image.asset("assets/images/about.png"),
               Padding(
-                child: Text(
-                  "Planet Xnomicon was born from a star named XLT347 after it was conquered by Xnomicans who use the energy of this planet to make rocks for their galaxy. ",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontFamily: 'Astron2',
-                  ),
-                ),
+                child: customText(widget.time),
                 padding: EdgeInsets.all(40),
               ),
               Image.asset("assets/images/rateyo.png"),

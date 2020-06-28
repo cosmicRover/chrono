@@ -22,8 +22,22 @@ class PickCarState extends State<PickCar> {
     super.initState();
   }
 
-  updateItem(String i){
-    imagePath = i;
+  updateItem(String i) {
+  print("tapped value ${i}");
+    switch (i) {
+      case "assets/images/rocket.gif":
+        imagePath = iconList[0];
+        return;
+      case "assets/images/horse.gif":
+        imagePath = iconList[1];
+        return;
+      case "assets/images/car.gif":
+        imagePath = iconList[2];
+        return;
+      case "assets/images/cycle.gif":
+        imagePath = iconList[3];
+        return;
+    }
   }
 
   @override
@@ -47,14 +61,15 @@ class PickCarState extends State<PickCar> {
                 Padding(
                   child: CarouselSlider(
                     options: CarouselOptions(
-                        height: _height - 40, enlargeCenterPage: true,
+                      height: _height - 40,
+                      enlargeCenterPage: true,
                       carouselController: buttonCarouselController,
                     ),
                     items: imgList.map((i) {
                       return Builder(
-                        builder: (BuildContext context) {
+                        builder: (BuildContext contex) {
                           return GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               updateItem(i);
                             },
                             child: Container(
@@ -81,8 +96,10 @@ class PickCarState extends State<PickCar> {
             child: GestureDetector(
               onTap: () {
                 buttonCarouselController.toString();
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MapView(widget.time, imagePath)));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => MapView(widget.time, imagePath)));
               },
               child: Align(
                 child: Image.asset(
@@ -115,4 +132,11 @@ List imgList = [
   'assets/images/horse.gif',
   'assets/images/car.gif',
   'assets/images/cycle.gif'
+];
+
+List iconList = [
+  'assets/images/smolrocket.png',
+  'assets/images/smolhorse.png',
+  'assets/images/smolcar.png',
+  'assets/images/smolbike.png'
 ];
