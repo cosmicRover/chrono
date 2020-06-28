@@ -1,4 +1,5 @@
 import 'package:chrono/choose_location/choose_location.dart';
+import 'package:chrono/destination_view/destination_view.dart';
 import 'package:chrono/intro/intro_page.dart';
 import 'package:chrono/map_view/map_view.dart';
 import 'package:chrono/pick_car/pick_car.dart';
@@ -19,6 +20,6 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         debugShowCheckedModeBanner: false,
-        home: IntroPage());
+        home: DestinationView());
   }
 }

@@ -90,6 +90,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.8"
+
+  flutter_rating_bar:
+    dependency: "direct dev"
+    description:
+      name: flutter_rating_bar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.1+1"
+
   flutter_polyline_points:
     dependency: "direct dev"
     description:
@@ -97,6 +106,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.2"
+
   flutter_svg:
     dependency: transitive
     description:
