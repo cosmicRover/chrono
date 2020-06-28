@@ -1,5 +1,5 @@
 import 'package:chrono/app_constants/colors.dart';
-import 'package:chrono/choose_location/choose_location.dart';
+import 'package:chrono/destination_view/destination_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:async';
@@ -14,7 +14,7 @@ class _SaveTravelsViewState extends State<SaveTravelsView> {
     var duration = Duration(seconds: 3);
     return Timer(duration, () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => ChooseLocation()));
+          context, MaterialPageRoute(builder: (context) => DestinationView()));
     });
   }
 

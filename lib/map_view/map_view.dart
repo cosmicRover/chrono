@@ -3,13 +3,14 @@ import 'package:chrono/resuable_widgets/frame1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class MapSample extends StatefulWidget {
+class MapView extends StatefulWidget {
   @override
-  State<MapSample> createState() => MapSampleState();
+  State<MapView> createState() => MapViewState();
 }
 
-class MapSampleState extends State<MapSample> {
+class MapViewState extends State<MapView> {
   GoogleMapController _controller;
   String _mapStyle;
 
@@ -31,7 +32,6 @@ class MapSampleState extends State<MapSample> {
 
   @override
   Widget build(BuildContext context) {
-    //TODO: Add marker location updater
     return new Scaffold(
         body: Stack(
       children: [
@@ -46,6 +46,22 @@ class MapSampleState extends State<MapSample> {
           myLocationButtonEnabled: false,
         ),
         Frame1(),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 0.0),
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              child: Center(
+                child: Stack(
+                  children: [
+                    SvgPicture.asset("assets/images/map_button.svg"),
+                    Text("shjgfjhagf", style: TextStyle(color: Colors.white),)
+                  ],
+                ),
+              )
+            )
+          ),
+        ),
       ],
     ));
   }

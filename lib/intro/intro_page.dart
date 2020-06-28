@@ -1,5 +1,4 @@
 import 'package:chrono/choose_location/choose_location.dart';
-import 'package:chrono/resuable_widgets/frame1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

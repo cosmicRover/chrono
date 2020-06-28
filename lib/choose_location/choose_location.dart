@@ -1,4 +1,6 @@
 import 'package:chrono/app_constants/colors.dart';
+import 'package:chrono/pick_car/pick_car.dart';
+import 'package:chrono/resuable_widgets/fram2.dart';
 import 'package:chrono/resuable_widgets/frame1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -53,13 +55,19 @@ class ChooseLocation extends StatelessWidget {
             ),
           ),
         ),
-        Frame1(),
+        Frame2(),
         Padding(
-          padding: const EdgeInsets.only(bottom: 35.0, left: 64, right: 64),
+          padding: const EdgeInsets.only(bottom: 15.0, left: 64, right: 64),
           child: Align(
             alignment: Alignment.bottomCenter,
-            child: Image.asset(
-              "assets/images/choose.gif",
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PickCar()));
+              },
+              child: Image.asset(
+                "assets/images/choose.gif",
+              ),
             ),
           ),
         ),
