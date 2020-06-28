@@ -3,12 +3,19 @@ import 'package:chrono/pick_car/pick_car.dart';
 import 'package:chrono/resuable_widgets/fram2.dart';
 import 'package:chrono/resuable_widgets/frame1.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ChooseLocation extends StatelessWidget {
+class ChooseLocation extends StatefulWidget {
+  @override
+  _ChooseLocationState createState() => _ChooseLocationState();
+}
+
+class _ChooseLocationState extends State<ChooseLocation> {
   @override
   Widget build(BuildContext context) {
-    final _width = MediaQuery.of(context).size.width;
+    var selectedColor = CustomColors.lightOrange;
+    String selectedTime;
 
     return Scaffold(
         body: Stack(
@@ -33,21 +40,23 @@ class ChooseLocation extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 24),
                   child: Image.asset("assets/images/choose_time.png"),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    //set up data structure
+                FlatButton(
+                  onPressed: () {
+                    selectedTime = "4320";
                   },
-                  child: Image.asset("assets/images/1.png"),
+                  child: Image.asset(
+                    "assets/images/1.png",
+                  ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    //set up data structure
+                FlatButton(
+                  onPressed: () {
+                    selectedTime = "2025";
                   },
                   child: Image.asset("assets/images/2.png"),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    //set up data structure
+                FlatButton(
+                  onPressed: () {
+                    selectedTime = "1950";
                   },
                   child: Image.asset("assets/images/3.png"),
                 ),
@@ -62,8 +71,12 @@ class ChooseLocation extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: GestureDetector(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => PickCar()));
+                if (selectedTime != null) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PickCar(selectedTime)));
+                }
               },
               child: Image.asset(
                 "assets/images/choose.gif",

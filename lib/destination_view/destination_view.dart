@@ -19,6 +19,17 @@ class DestinationViewState extends State<DestinationView> {
     super.initState();
   }
 
+
+class DestinationView extends StatefulWidget {
+  final String time;
+  final String car;
+
+  const DestinationView(this.time, this.car);
+
+  @override
+  _DestinationViewState createState() => _DestinationViewState();
+}
+
   @override
   Widget build(BuildContext context) {
     final _width = MediaQuery.of(context).size.width;
