@@ -5,6 +5,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:async';
 
 class SaveTravelsView extends StatefulWidget {
+  final String time;
+  final String car;
+
+  const SaveTravelsView(this.time, this.car);
+
   @override
   _SaveTravelsViewState createState() => _SaveTravelsViewState();
 }
@@ -14,7 +19,7 @@ class _SaveTravelsViewState extends State<SaveTravelsView> {
     var duration = Duration(seconds: 3);
     return Timer(duration, () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => DestinationView()));
+          context, MaterialPageRoute(builder: (context) => DestinationView(widget.time, widget.car)));
     });
   }
 

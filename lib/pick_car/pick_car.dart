@@ -5,16 +5,32 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class PickCar extends StatefulWidget {
-  PickCar() : super();
+  final String time;
+
+  const PickCar(this.time);
 
   @override
   PickCarState createState() => PickCarState();
 }
 
 class PickCarState extends State<PickCar> {
+  String imagePath;
+
+  @override
+  void initState() {
+    print("passed time: ${widget.time}");
+    super.initState();
+  }
+
+  updateItem(String i){
+    imagePath = i;
+  }
+
   @override
   Widget build(BuildContext context) {
     final _height = MediaQuery.of(context).size.height;
+
+    CarouselController buttonCarouselController = CarouselController();
 
     return Scaffold(
       body: Stack(
@@ -31,17 +47,24 @@ class PickCarState extends State<PickCar> {
                 Padding(
                   child: CarouselSlider(
                     options: CarouselOptions(
-                        height: _height - 40, enlargeCenterPage: true),
+                        height: _height - 40, enlargeCenterPage: true,
+                      carouselController: buttonCarouselController,
+                    ),
                     items: imgList.map((i) {
                       return Builder(
                         builder: (BuildContext context) {
-                          return Container(
-                            child: Image.asset(
-                              i,
-                              fit: BoxFit.fitWidth,
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(25),
+                          return GestureDetector(
+                            onTap: (){
+                              updateItem(i);
+                            },
+                            child: Container(
+                              child: Image.asset(
+                                i,
+                                fit: BoxFit.fitWidth,
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25),
+                              ),
                             ),
                           );
                         },
@@ -57,8 +80,9 @@ class PickCarState extends State<PickCar> {
           Padding(
             child: GestureDetector(
               onTap: () {
+                buttonCarouselController.toString();
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MapView()));
+                    MaterialPageRoute(builder: (context) => MapView(widget.time, imagePath)));
               },
               child: Align(
                 child: Image.asset(
@@ -86,4 +110,9 @@ class PickCarState extends State<PickCar> {
   }
 }
 
-List imgList = ['assets/images/rocket.gif', 'assets/images/horse.gif'];
+List imgList = [
+  'assets/images/rocket.gif',
+  'assets/images/horse.gif',
+  'assets/images/car.gif',
+  'assets/images/cycle.gif'
+];
